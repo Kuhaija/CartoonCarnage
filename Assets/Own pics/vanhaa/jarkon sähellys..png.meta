@@ -1,0 +1,421 @@
+fileFormatVersion: 2
+guid: 3eda948ac574cbd40ba8fca4c7889c08
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8634749390579041869
+    second: "jarkon s\xE4hellys._0"
+  - first:
+      213: -6294872197422943295
+    second: "jarkon s\xE4hellys._1"
+  - first:
+      213: 8779790854341925332
+    second: "jarkon s\xE4hellys._2"
+  - first:
+      213: 3634732329783868032
+    second: "jarkon s\xE4hellys._3"
+  - first:
+      213: 3071190658274371982
+    second: "jarkon s\xE4hellys._4"
+  - first:
+      213: -723615836986119454
+    second: "jarkon s\xE4hellys._5"
+  - first:
+      213: -8622794632378821535
+    second: "jarkon s\xE4hellys._6"
+  - first:
+      213: 5230636885080013944
+    second: "jarkon s\xE4hellys._7"
+  - first:
+      213: -8784417328576000887
+    second: "jarkon s\xE4hellys._8"
+  - first:
+      213: -3578828249656676707
+    second: "jarkon s\xE4hellys._9"
+  - first:
+      213: -6424618955914241315
+    second: "jarkon s\xE4hellys._10"
+  - first:
+      213: 1832611662686003427
+    second: "jarkon s\xE4hellys._11"
+  - first:
+      213: -7139840839302563670
+    second: "jarkon s\xE4hellys._12"
+  - first:
+      213: -7901610380108066470
+    second: "jarkon s\xE4hellys._13"
+  - first:
+      213: 169070764083272167
+    second: "jarkon s\xE4hellys._14"
+  - first:
+      213: -6782583970156557870
+    second: "jarkon s\xE4hellys._15"
+  - first:
+      213: 4030474868983032586
+    second: "jarkon s\xE4hellys._16"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._0"
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 3038
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.5382446, y: 0.35658285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9f30a9d253b2880800000000000000
+      internalID: -8634749390579041869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._1"
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 3057
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.59561163, y: 0.3459592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c37f1e861f14a8a0800000000000000
+      internalID: -6294872197422943295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._2"
+      rect:
+        serializedVersion: 2
+        x: 3047
+        y: 3096
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.5318706, y: 0.36189452}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d91643c34518d970800000000000000
+      internalID: 8779790854341925332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._3"
+      rect:
+        serializedVersion: 2
+        x: 4486
+        y: 3095
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.5191224, y: 0.3725179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a356adbc9217230800000000000000
+      internalID: 3634732329783868032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._4"
+      rect:
+        serializedVersion: 2
+        x: 5855
+        y: 3100
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.51593524, y: 0.36189452}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8921ffb1af0f9a20800000000000000
+      internalID: 3071190658274371982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._5"
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1833
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.29284158, y: 0.3725179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea689aea3335f5f0800000000000000
+      internalID: -723615836986119454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._6"
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 1866
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.41394955, y: 0.36189452}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1645ae5a7fda55880800000000000000
+      internalID: -8622794632378821535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._7"
+      rect:
+        serializedVersion: 2
+        x: 3502
+        y: 1880
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.4649424, y: 0.36720622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87cff3ca884f69840800000000000000
+      internalID: 5230636885080013944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._8"
+      rect:
+        serializedVersion: 2
+        x: 5016
+        y: 1870
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.47450358, y: 0.33533582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c01734bfa771680800000000000000
+      internalID: -8784417328576000887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._9"
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 403
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.49681303, y: 0.36720628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ea41b1ba2755ec0800000000000000
+      internalID: -3578828249656676707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._10"
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 354
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.5223094, y: 0.37782973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda9d73491b27d6a0800000000000000
+      internalID: -6424618955914241315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "jarkon s\xE4hellys._11"
+      rect:
+        serializedVersion: 2
+        x: 3460
+        y: 321
+        width: 1500
+        height: 900
+      alignment: 9
+      pivot: {x: 0.47131673, y: 0.37251782}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e023adf89ebe6910800000000000000
+      internalID: 1832611662686003427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
