@@ -10,6 +10,8 @@ public class SwipeTest : MonoBehaviour
     public Transform player;
     private Vector3 desiredPosition;
     private float desiredSpeed;
+    
+
     ///////////////////////////////
 
     //DASH//////////////////////////
@@ -80,10 +82,10 @@ public class SwipeTest : MonoBehaviour
 
         if (swipeControls.TapLeft || swipeControls.TapRight){
             if (swipeControls.TapLeft){
-                transform.Translate (Vector3.left * 0.5f);
+                //transform.Translate (Vector3.left * 0.5f);
             }
             if (swipeControls.TapRight){
-                transform.Translate (Vector3.right * 0.5f);
+                //transform.Translate (Vector3.right * 0.5f);
             }
         
 

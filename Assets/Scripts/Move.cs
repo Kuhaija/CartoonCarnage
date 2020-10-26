@@ -20,6 +20,8 @@ public class Move : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     private bool IsAttacking = false;
+    private bool Left = false;
+    private bool Right = false;
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -222,7 +224,8 @@ public class Move : MonoBehaviour
         #region Keyboard move & attack
         //KEYBOARD MOVE & ATTACK////////////////////////////////////
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            transform.Translate (Vector3.left * moveSpeed);
+            Left = true;
+            //transform.Translate (Vector3.left * moveSpeed);
             if(m_FacingRight){
                 Flip();
                 Attack();
@@ -232,7 +235,8 @@ public class Move : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            transform.Translate (Vector3. right * moveSpeed);
+            Right = true;
+            //transform.Translate (Vector3. right * moveSpeed);
             if(m_FacingRight){
                 Attack();
             }
@@ -330,10 +334,20 @@ public class Move : MonoBehaviour
 
      public void Attack()
     {
-        //if(Time.time >= nextAttackTime){
+        
+        if(!IsAttacking){
         //Play an attack animation
+            IsAttacking = true;
             animator.SetTrigger("Attack");
-
+            if(Left || tapLeft){
+                transform.Translate (Vector3.left * moveSpeed);
+                Left = false;
+                tapLeft = false;
+            }else if(Right || tapRight){
+                transform.Translate (Vector3.right * moveSpeed);
+                Right = false;
+                tapRight = false;
+            }
             // Detect enemies in range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
@@ -356,7 +370,7 @@ public class Move : MonoBehaviour
         
            
             
-        //}
+        }
     }
 
     public void Damage(){
@@ -447,6 +461,7 @@ public class Move : MonoBehaviour
 
     private void ResetAttack(){
 
+        IsAttacking = false;
     }
     
 
