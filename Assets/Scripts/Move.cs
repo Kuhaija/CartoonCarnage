@@ -22,6 +22,8 @@ public class Move : MonoBehaviour
     private bool IsAttacking = false;
     private bool Left = false;
     private bool Right = false;
+    private bool MouseLeft = false;
+    private bool MouseRight = false;
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -37,11 +39,13 @@ public class Move : MonoBehaviour
 
     //DASH///////////////////
     public float dashSpeed;
-    private float dashTime;
+    public float dashTime;
     public float startDashTime;
     private int dir;
     private float dashaus;
     private bool IsDashing;
+    private bool DashLeft = false;
+    private bool DashRight = false;
     //DASH//////////////////
 
     //SWIPE/////////////////////
@@ -266,8 +270,10 @@ public class Move : MonoBehaviour
         if(dir == 0){
             if(Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)){
                 dir = 1;
+                DashLeft = true;
             } else if(Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)){
                 dir = 2;
+                DashRight = true;
             }
         }else {
             if(dashTime <= 0){
@@ -278,10 +284,12 @@ public class Move : MonoBehaviour
                 dashTime -= Time.deltaTime;
 
                 if(dir == 1){
-                    rb.velocity = Vector2.left * dashSpeed;
+                    MouseLeft = true;
+                    DashLeft = true;
                     Dash();
                 }else if(dir ==2){
-                    rb.velocity = Vector2.right *dashSpeed;
+                    MouseRight = true;
+                    DashRight = true;
                     Dash();
                 }
             }
@@ -411,6 +419,14 @@ public class Move : MonoBehaviour
         IsDashing = true;
         playerHealth -= 5;
 
+        if(DashLeft){
+            rb.velocity = Vector2.left * dashSpeed;
+            DashLeft = false;
+        }else if(DashRight){
+            rb.velocity = Vector2.right * dashSpeed;
+            DashRight = false;
+        }
+            
             // Detect enemies in range of attack
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
                 
