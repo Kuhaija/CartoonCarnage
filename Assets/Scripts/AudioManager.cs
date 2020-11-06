@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
 
 	public Sound[] sounds;
 
+	private bool isMuted;
+
 	void Awake()
 	{
 		if (instance != null)
@@ -36,7 +38,11 @@ public class AudioManager : MonoBehaviour
 
 	void Start ()
 	{
+		isMuted = PlayerPrefs.GetInt("MUTED") == 1;
+		AudioListener.pause = isMuted;
+
         		Play("Arena");
+				Play("RoundStart");
 
 	}
 
@@ -53,6 +59,13 @@ public class AudioManager : MonoBehaviour
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.Play();
+	}
+
+	public void MutePressed()
+	{
+		isMuted = !isMuted;
+		AudioListener.pause = isMuted;
+		PlayerPrefs.SetInt("MUTED", isMuted ? 1 : 0);
 	}
 
 }

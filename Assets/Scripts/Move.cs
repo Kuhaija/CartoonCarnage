@@ -18,12 +18,12 @@ public class Move : MonoBehaviour
     public int attackDamage = 100;
     public int playerHealth = 1;
     public float attackRate = 2f;
-    float nextAttackTime = 0f;
+    //float nextAttackTime = 0f;
     private bool IsAttacking = false;
     private bool Left = false;
     private bool Right = false;
-    private bool MouseLeft = false;
-    private bool MouseRight = false;
+    //private bool MouseLeft = false;
+    //private bool MouseRight = false;
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -46,6 +46,7 @@ public class Move : MonoBehaviour
     private bool IsDashing;
     private bool DashLeft = false;
     private bool DashRight = false;
+    private bool toimisko = false;
     //DASH//////////////////
 
     //SWIPE/////////////////////
@@ -284,11 +285,11 @@ public class Move : MonoBehaviour
                 dashTime -= Time.deltaTime;
 
                 if(dir == 1){
-                    MouseLeft = true;
+                    //MouseLeft = true;
                     DashLeft = true;
                     Dash();
                 }else if(dir ==2){
-                    MouseRight = true;
+                    //MouseRight = true;
                     DashRight = true;
                     Dash();
                 }
@@ -418,6 +419,7 @@ public class Move : MonoBehaviour
         animator.SetTrigger("Dash");
         IsDashing = true;
         playerHealth -= 5;
+        
 
         if(DashLeft){
             rb.velocity = Vector2.left * dashSpeed;
@@ -443,6 +445,7 @@ public class Move : MonoBehaviour
                     }
                 }
                 //animator.ResetTrigger("Dash");
+                
         }
     }
 
@@ -450,7 +453,7 @@ public class Move : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Enemy" && !IsDashing)
+        if (collision.gameObject.tag == "Enemy"  /*&& !IsDashing*/)
         {   
             currentDamageTime += Time.deltaTime;
             if(currentDamageTime > damageTime) {
