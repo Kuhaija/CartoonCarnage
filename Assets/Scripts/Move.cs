@@ -24,6 +24,7 @@ public class Move : MonoBehaviour
     private bool Right = false;
     //private bool MouseLeft = false;
     //private bool MouseRight = false;
+    public float position;
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -73,7 +74,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        position = transform.position.x;
         tap = tapLeft = tapRight = swipeLeft = swipeRight = false;
 
         #region Swipe

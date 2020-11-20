@@ -7,8 +7,12 @@ using UnityEngine.Audio;
 public class MainMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
+    public GameObject Map;
+    public GameObject Open;
+    public GameObject Closed;
 
     private bool isMuted;
+    int highscore;
 
 	void Start ()
 	{
@@ -41,6 +45,27 @@ public class MainMenu : MonoBehaviour
 		AudioListener.pause = isMuted;
 		PlayerPrefs.SetInt("MUTED", isMuted ? 1 : 0);
 	}
+
+    public void ChooseMap()
+    {
+        Map.SetActive(true);
+        highscore = PlayerPrefs.GetInt ("highscore", highscore);
+        //Debug.Log(highscore);
+        if(highscore < 10000){
+            Closed.SetActive(true);
+        }else if (highscore >= 10000) {
+            Open.SetActive(true);
+        }
+    }
+
+    public void Map1()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void Map2()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 
     
 

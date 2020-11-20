@@ -6,27 +6,26 @@ using UnityEngine;
 
 public class SimpleFollow : MonoBehaviour
 {
+    
     public float speed;
-
+    
     private Rigidbody2D rb;
 
     private Transform target;
 
     public bool m_FacingRight = true;  // For determining which way the enemy is currently facing.
 
+    private int i = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
 
     }
 
 
     void Update()
     {
-
 
         if (transform.position.x < target.position.x)
         {
@@ -55,8 +54,28 @@ public class SimpleFollow : MonoBehaviour
                 rb.velocity = new Vector2(-speed, 0);
             }
         }
+        //Debug.Log(speed);
+        //Debug.Log(SpawnVol666.JOKO);
         //transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
+        if(SpawnVol666.JOKO == 2 && i < 1) {
+            speed += 0.2f;
+            i++;
+        }else if(SpawnVol666.JOKO == 3 && i < 2) {
+            speed += 0.3f;
+            i++;
+        }else if(SpawnVol666.JOKO == 4 && i < 3) {
+            speed += 0.4f;
+            i++;
+        }else if(SpawnVol666.JOKO == 5 && i < 4) {
+            speed += 0.5f;
+            i++;
+        }else if(SpawnVol666.JOKO == 6 && i < 5) {
+            speed += 1f;
+            i++;
+        }else if(SpawnVol666.JOKO == 7 && i < 6) {
+            speed += 1.5f;
+            i++;
+        }
     }
 
     public void Flip()
