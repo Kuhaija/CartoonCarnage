@@ -22,6 +22,8 @@ public class SwipeTest : MonoBehaviour
     private int dir;
     private bool dashaako = false;
     private int health;
+    public bool DashLeft = false;
+    public bool DashRight = false;
     //////////////////////////////////
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class SwipeTest : MonoBehaviour
     void Update()
     {
         health = GetComponent<Move>().playerHealth;
+        DashLeft = DashRight = false;
         
         if (dir == 0 && health > 5 && (swipeControls.SwipeLeft || swipeControls.SwipeRight)){
             if (swipeControls.SwipeLeft){
@@ -58,19 +61,23 @@ public class SwipeTest : MonoBehaviour
                 //Debug.Log("Kui monesti tää välimalli tulee");
                 dashaako = false;
             } else{
-                dashTime -= Time.deltaTime;
+                dashTime -= Time.fixedDeltaTime;
 
                 if(dir == 1){
                     if(!dashaako){
-                        rb.velocity = Vector2.left * dashSpeed;
+                        //rb.velocity = Vector2.left * dashSpeed;
+                        DashLeft = true;
                         GetComponent<Move>().Dash();
+                        
                         //Debug.Log("Kui monesti vasen?");
                         dashaako = true;
                     }
                 }else if(dir ==2){
                     if(!dashaako){
-                        rb.velocity = Vector2.right *dashSpeed;
+                        //rb.velocity = Vector2.right *dashSpeed;
+                        DashRight = true;
                         GetComponent<Move>().Dash();
+                        
                         //Debug.Log("Kui monesti oikia?");
                         dashaako = true;
                     }

@@ -9,6 +9,8 @@ public class Move : MonoBehaviour
 {
     public Animator animator;
     private Rigidbody2D rb;
+    public GameObject MainChar;
+    public GameObject död;
     private float dirX;
     private float moveSpeed = 0.5f;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -16,15 +18,20 @@ public class Move : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 100;
+    public int damageMultiplier = 3;
+    private int dashDamage;
     public int playerHealth = 1;
     public float attackRate = 2f;
     //float nextAttackTime = 0f;
     private bool IsAttacking = false;
     private bool Left = false;
     private bool Right = false;
-    //private bool MouseLeft = false;
-    //private bool MouseRight = false;
+    private bool MouseLeft = false;
+    private bool MouseRight = false;
     public float position;
+    private int d = 0;
+    private int i;
+    
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -45,8 +52,8 @@ public class Move : MonoBehaviour
     private int dir;
     private float dashaus;
     private bool IsDashing;
-    private bool DashLeft = false;
-    private bool DashRight = false;
+    private bool DashLeft;
+    private bool DashRight;
     private bool toimisko = false;
     //DASH//////////////////
 
@@ -64,11 +71,16 @@ public class Move : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.simulated = true;
+        i = 0;
         rageBar.SetHealth(playerHealth);
         rageBar1.SetHealth(playerHealth);
 
         dashTime = startDashTime;
         dashaus = GetComponent<SwipeTest>().dashTime;
+
+        MainChar.SetActive(true);
+        död.SetActive(false);
     }
 
     // Update is called once per frame
@@ -76,7 +88,12 @@ public class Move : MonoBehaviour
     {
         position = transform.position.x;
         tap = tapLeft = tapRight = swipeLeft = swipeRight = false;
-
+        //DashLeft = GetComponent<SwipeTest>().DashLeft;
+        //DashRight = GetComponent<SwipeTest>().DashRight;
+        död.transform.position = MainChar.transform.position;
+        död.transform.rotation = MainChar.transform.rotation;
+        
+        
         #region Swipe
         //SWIPE/////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -263,7 +280,12 @@ public class Move : MonoBehaviour
         //QUITE SELF EXPALAINATORY///////
         if (playerHealth <= 0)
         {
-            Die();
+            if(i < 1){
+                animator.SetTrigger("Death");
+                rb.simulated = false;
+                i++;
+                //Die();
+            }
         }
         //QUITE SELF EXPALAINATORY///////
 
@@ -272,10 +294,12 @@ public class Move : MonoBehaviour
         if(dir == 0){
             if(Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)){
                 dir = 1;
-                DashLeft = true;
+                
+                
             } else if(Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)){
                 dir = 2;
-                DashRight = true;
+                
+                
             }
         }else {
             if(dashTime <= 0){
@@ -286,11 +310,9 @@ public class Move : MonoBehaviour
                 dashTime -= Time.deltaTime;
 
                 if(dir == 1){
-                    //MouseLeft = true;
                     DashLeft = true;
                     Dash();
-                }else if(dir ==2){
-                    //MouseRight = true;
+                }else if(dir == 2){
                     DashRight = true;
                     Dash();
                 }
@@ -299,7 +321,7 @@ public class Move : MonoBehaviour
         //DASH//////////////////////////////////////////////////////////////////////////////////////////////
         #endregion
     
-        
+       
     }
     
     public void Moves()
@@ -387,22 +409,44 @@ public class Move : MonoBehaviour
         // Detect enemies in range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
-            // Damage them
-            foreach(Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-
-                if (enemy.GetComponent<Enemy>().isDead)
+            if(dashTime <= 0){
+                // Damage them
+                dashDamage = attackDamage * damageMultiplier;
+                foreach(Collider2D enemy in hitEnemies)
                 {
-                    playerHealth++;
-                    rageBar.SetHealth(playerHealth);
-                    rageBar1.SetHealth(playerHealth);
+                    enemy.GetComponent<Enemy>().TakeDamage(dashDamage);
+
+                    if (enemy.GetComponent<Enemy>().isDead)
+                    {
+                        playerHealth++;
+                        rageBar.SetHealth(playerHealth);
+                        rageBar1.SetHealth(playerHealth);
+                    }
                 }
+                //nextAttackTime = Time.time + 1f / attackRate;
+                direction = (touchPosition - transform.position);
+                //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
+                //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
+            }else {
+               // Damage them
+               
+                foreach(Collider2D enemy in hitEnemies)
+                {
+                    Debug.Log(enemy);
+                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+                    if (enemy.GetComponent<Enemy>().isDead)
+                    {
+                        playerHealth++;
+                        rageBar.SetHealth(playerHealth);
+                        rageBar1.SetHealth(playerHealth);
+                    }
+                }
+                //nextAttackTime = Time.time + 1f / attackRate;
+                direction = (touchPosition - transform.position);
+                //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
+                //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed; 
             }
-            //nextAttackTime = Time.time + 1f / attackRate;
-            direction = (touchPosition - transform.position);
-            //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
-            //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
     }
     void OnDrawGizmosSelected()
     {
@@ -413,22 +457,28 @@ public class Move : MonoBehaviour
     }
 
     public void Dash(){
-         
+        if(playerHealth > 5 && d < 1){    
+            playerHealth -= 5;
+            //animator.SetTrigger("Dash");
+            IsDashing = true;
+            rageBar.SetHealth(playerHealth);
+            rageBar1.SetHealth(playerHealth);
+            d++;
+            
 
-        
-        if(playerHealth > 5){    
-        animator.SetTrigger("Dash");
-        IsDashing = true;
-        playerHealth -= 5;
-        
-
-        if(DashLeft){
-            rb.velocity = Vector2.left * dashSpeed;
-            DashLeft = false;
-        }else if(DashRight){
-            rb.velocity = Vector2.right * dashSpeed;
-            DashRight = false;
-        }
+            if(GetComponent<SwipeTest>().DashLeft == true || DashLeft == true){
+                
+                animator.SetTrigger("Dash");
+                rb.velocity = Vector2.left * dashSpeed;
+                DashLeft = false;
+                //Debug.Log("Tuleeko vasen " + GetComponent<SwipeTest>().DashLeft + DashLeft);
+            }else if (GetComponent<SwipeTest>().DashRight == true || DashRight == true){
+                
+                animator.SetTrigger("Dash");
+                rb.velocity = Vector2.right * dashSpeed;
+                DashRight = false;
+                //Debug.Log("Tuleeko oikia " + GetComponent<SwipeTest>().DashRight + DashRight);
+            }
             
             // Detect enemies in range of attack
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -448,6 +498,8 @@ public class Move : MonoBehaviour
                 //animator.ResetTrigger("Dash");
                 
         }
+        d = 0;
+        
     }
 
     //private void OnCollisionStay2D(Collision2D collision)
@@ -470,6 +522,7 @@ public class Move : MonoBehaviour
 
     private void Die()
     {
+        //animator.SetTrigger("Death");
         paussiMenu.Death();
     }
     
@@ -484,7 +537,6 @@ public class Move : MonoBehaviour
         IsAttacking = false;
     }
     
-
 
     #region For Swipe
     public bool Tap {get {return tap;}}

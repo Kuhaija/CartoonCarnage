@@ -830,15 +830,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 0.96
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.79999983
+        outSlope: 0.79999983
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.4
-        value: 0.54
+        value: 1.18
+        inSlope: 0.88800025
+        outSlope: 0.88800025
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.71666664
+        value: 1.33
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3443,15 +3452,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.3
         value: 0.96
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.79999983
+        outSlope: 0.79999983
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.4
-        value: 0.54
+        value: 1.18
+        inSlope: 0.88800025
+        outSlope: 0.88800025
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.71666664
+        value: 1.33
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3649,6 +3667,27 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.16666667
+    functionName: Damage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.3
+    functionName: Damage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.35
+    functionName: Damage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.4
     functionName: Damage
     data: 

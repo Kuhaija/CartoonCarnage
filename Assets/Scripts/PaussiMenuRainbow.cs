@@ -49,11 +49,13 @@ public class PaussiMenuRainbow : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("menu");
+        ScoreScript.scoreValue = 0;
     }
 
     public void QuitGame()
     {
         Debug.Log("Sie lopetit");
+        ScoreScript.scoreValue = 0;
         Application.Quit();
     }
     public void Restart()
@@ -68,6 +70,7 @@ public class PaussiMenuRainbow : MonoBehaviour
        deathMenuUI.SetActive(true);
        Time.timeScale = 0f;
        GameIsPaused = true;
+       ScoreScript.scoreValue = 0;
     }
 }
 

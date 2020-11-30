@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject Closed;
 
     private bool isMuted;
-    int highscore;
+    int highscoreNarc;
 
 	void Start ()
 	{
@@ -49,11 +49,11 @@ public class MainMenu : MonoBehaviour
     public void ChooseMap()
     {
         Map.SetActive(true);
-        highscore = PlayerPrefs.GetInt ("highscore", highscore);
+       highscoreNarc = PlayerPrefs.GetInt ("highscoreNarc", highscoreNarc);
         //Debug.Log(highscore);
-        if(highscore < 10000){
+        if(highscoreNarc < 10000){
             Closed.SetActive(true);
-        }else if (highscore >= 10000) {
+        }else if (highscoreNarc >= 10000) {
             Open.SetActive(true);
         }
     }

@@ -57,22 +57,22 @@ public class SimpleFollow : MonoBehaviour
         //Debug.Log(speed);
         //Debug.Log(SpawnVol666.JOKO);
         //transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        if(SpawnVol666.JOKO == 2 && i < 1) {
+        if(SpawnVol666.wave == 2 && i < 1) {
             speed += 0.2f;
             i++;
-        }else if(SpawnVol666.JOKO == 3 && i < 2) {
+        }else if(SpawnVol666.wave == 3 && i < 2) {
             speed += 0.3f;
             i++;
-        }else if(SpawnVol666.JOKO == 4 && i < 3) {
+        }else if(SpawnVol666.wave == 4 && i < 3) {
             speed += 0.4f;
             i++;
-        }else if(SpawnVol666.JOKO == 5 && i < 4) {
+        }else if(SpawnVol666.wave == 5 && i < 4) {
             speed += 0.5f;
             i++;
-        }else if(SpawnVol666.JOKO == 6 && i < 5) {
+        }else if(SpawnVol666.wave == 6 && i < 5) {
             speed += 1f;
             i++;
-        }else if(SpawnVol666.JOKO == 7 && i < 6) {
+        }else if(SpawnVol666.wave == 7 && i < 6) {
             speed += 1.5f;
             i++;
         }

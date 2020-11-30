@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -11,26 +12,37 @@ public class ScoreScript : MonoBehaviour
     public Text score;
     [SerializeField]
     private Text highScore;
-    public static int highscore;
+    public static int highscoreNarc;
+    public static int highscoreRainbow;
     
     // Start is called before the first frame update
     void Start()
     {
         //score = GetComponent<Text> ();
         //highScore = GetComponent<Text> ();
-        highscore = PlayerPrefs.GetInt ("highscore", highscore);
+        highscoreNarc = PlayerPrefs.GetInt ("highscoreNarc", highscoreNarc);
+        highscoreRainbow = PlayerPrefs.GetInt ("highscoreRainbow", highscoreRainbow);
     }
 
     // Update is called once per frame
     void Update()
     {
         score.text = "Score: " + scoreValue;
-        //SAMA TEKSTI TULEE MOLEMPII .texteihin!!
-        highScore.text = "HIGHSCORE: " + highscore;
-        if (scoreValue > highscore){
-            highscore = scoreValue;
+        if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("CartoonApocalypse")){
+        highScore.text = "HIGHSCORE: " + highscoreNarc;
+            if (scoreValue > highscoreNarc){
+                highscoreNarc = scoreValue;
 
-            PlayerPrefs.SetInt ("highscore", highscore);
+                PlayerPrefs.SetInt ("highscoreNarc", highscoreNarc);
+            }
+        }
+        if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("LikeARainbowInAScene")){
+        highScore.text = "HIGHSCORE: " + highscoreRainbow;
+            if (scoreValue > highscoreRainbow){
+                highscoreRainbow = scoreValue;
+
+                PlayerPrefs.SetInt ("highscoreRainbow", highscoreRainbow);
+            }
         }
         
     }

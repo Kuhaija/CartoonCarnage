@@ -10,6 +10,8 @@ public class PaussiMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject deathMenuUI;
+    public GameObject MainChar;
+    public GameObject död;
     
 
     void Start() {
@@ -29,6 +31,9 @@ public class PaussiMenu : MonoBehaviour
             }
 
         }
+        död.transform.position = MainChar.transform.position;
+        död.transform.rotation = MainChar.transform.rotation;
+        
     }
 
     public void Resume()
@@ -49,11 +54,13 @@ public class PaussiMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("menu");
+        ScoreScript.scoreValue = 0;
     }
 
     public void QuitGame()
     {
         Debug.Log("Sie lopetit");
+        ScoreScript.scoreValue = 0;
         Application.Quit();
     }
     public void Restart()
@@ -65,9 +72,13 @@ public class PaussiMenu : MonoBehaviour
     }
     public void Death()
     {
+       död.transform.localScale = MainChar.transform.localScale;
        deathMenuUI.SetActive(true);
+       MainChar.SetActive(false);
+       död.SetActive(true);
        Time.timeScale = 0f;
        GameIsPaused = true;
+       ScoreScript.scoreValue = 0;
     }
 }
 

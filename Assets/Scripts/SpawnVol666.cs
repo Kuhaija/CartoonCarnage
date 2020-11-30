@@ -16,7 +16,7 @@ public class SpawnVol666 : MonoBehaviour
     private int Points = 0;
     private float speedO;
     private int i;
-    public static int JOKO;
+    public static int wave;
     
 
     void Start()
@@ -56,71 +56,71 @@ public class SpawnVol666 : MonoBehaviour
             
             
         
-        while(Points < 1000 && enemyCount <= 15) {
+        while(Points < 1000 && enemyCount <= 5000) {
             while(i <= 1){
-                speedO += 0.5f;
+                speedO += 2f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(1f, 3f));
-            enemyCount += 1;
-            JOKO = 1;
+            enemyCount += 2;
+            wave = 1;
         }
         while (Points >= 1000 && Points < 2500) {
             while(i <= 2){
-                speedO += 0.5f;
+                speedO += 3f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(1f, 2.5f));
-            enemyCount += 1;
-            JOKO = 2;
+            enemyCount += 5;
+            wave = 2;
         }
         while(Points >= 2500 && Points < 5000 ) {
             while(i <= 3){
-                speedO += 0.5f;
+                speedO += 5f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(0.5f, 2f));
-            enemyCount += 1;
-            JOKO = 3;
+            enemyCount += 10;
+            wave = 3;
         }
         while(Points >= 5000  && Points < 10000) {
             while(i <= 4){
-                speedO += 0.5f;
+                speedO += 5f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(0.5f, 1f));
-            enemyCount += 1;
-            JOKO = 4;
+            enemyCount += 20;
+            wave = 4;
         }
-        while(Points >= 10000  && Points < 15000) {
+        while(Points >= 8000  && Points < 10000) {
             while(i <= 5){
-                speedO += 0.5f;
+                speedO += 6f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(0.5f, 0.75f));
-            enemyCount += 1;
-            JOKO = 5;
+            enemyCount += 45;
+            wave = 5;
         }
         while( Points >= 10000  && Points < 10000000 ) {
             while(i <= 6){
-                speedO += 0.5f;
+                speedO += 2f;
                 i ++;
                 }
             xPos = PlayerLocation + HowFar;
             Instantiate(theEnemy, new Vector3(xPos, -4, 0), Quaternion.identity);
             yield return new WaitForSeconds(wait_time = UnityEngine.Random.Range(0.5f, 0.75f));
-            enemyCount += 1;
-            JOKO = 6;
+            enemyCount += 45;
+            wave = 6;
         }
     }
 }
