@@ -144,7 +144,7 @@ public class Move : MonoBehaviour
         }
 
         // Did we cross the deadzone?
-        if(swipeDelta.magnitude > 110)
+        if(swipeDelta.magnitude > 120)
         {
             tapRequested = false;
             tapLeft = tapRight = false;
@@ -156,12 +156,16 @@ public class Move : MonoBehaviour
                 // Left or right
                 if(x < 0){
                     swipeLeft = true;
+                    swipeRight = false;
+                    //Debug.Log("Kui monta kutsua vasen");
                     if(m_FacingRight){
                         Flip();
                     }
                 }  
-                else{
+                else if(x > 0){
                     swipeRight = true;
+                    swipeLeft = false;
+                    //Debug.Log("Kui monta kutsua oikia");
                     if(!m_FacingRight){
                         Flip();
                     }
@@ -292,13 +296,15 @@ public class Move : MonoBehaviour
         #region Dash
         //DASH////////////////////////////////////////
         if(dir == 0){
-            if(Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift)){
+            if(Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift) || swipeLeft == true){
                 dir = 1;
+                Dash();
+                swipeLeft = false;
                 
-                
-            } else if(Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift)){
+            } else if(Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift) || swipeRight == true){
                 dir = 2;
-                
+                Dash();
+                swipeRight = false;
                 
             }
         }else {
@@ -311,10 +317,12 @@ public class Move : MonoBehaviour
 
                 if(dir == 1){
                     DashLeft = true;
-                    Dash();
+                    //Dash();
+                    //Debug.Log("Kui monta kutsua vasen");
                 }else if(dir == 2){
                     DashRight = true;
-                    Dash();
+                    //Dash();
+                    //Debug.Log("Kui monta kutsua oikia");
                 }
             }
         }
@@ -432,7 +440,7 @@ public class Move : MonoBehaviour
                
                 foreach(Collider2D enemy in hitEnemies)
                 {
-                    Debug.Log(enemy);
+                    //Debug.Log(enemy);
                     enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 
                     if (enemy.GetComponent<Enemy>().isDead)
@@ -466,17 +474,19 @@ public class Move : MonoBehaviour
             d++;
             
 
-            if(GetComponent<SwipeTest>().DashLeft == true || DashLeft == true){
-                
+            if(GetComponent<SwipeTest>().DashLeft == true || DashLeft == true || swipeLeft == true){
+                Debug.Log("liike vasen" + GetComponent<SwipeTest>().DashLeft + DashLeft + swipeLeft);
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.left * dashSpeed;
                 DashLeft = false;
+                swipeLeft = false;
                 //Debug.Log("Tuleeko vasen " + GetComponent<SwipeTest>().DashLeft + DashLeft);
-            }else if (GetComponent<SwipeTest>().DashRight == true || DashRight == true){
-                
+            }else if (GetComponent<SwipeTest>().DashRight == true || DashRight == true || swipeRight == true){
+                Debug.Log("liike oikea");
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.right * dashSpeed;
                 DashRight = false;
+                swipeRight = false;
                 //Debug.Log("Tuleeko oikia " + GetComponent<SwipeTest>().DashRight + DashRight);
             }
             
