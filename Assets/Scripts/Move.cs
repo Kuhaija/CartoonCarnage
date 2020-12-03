@@ -297,11 +297,15 @@ public class Move : MonoBehaviour
         //DASH////////////////////////////////////////
         if(dir == 0){
             if(Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKey(KeyCode.LeftShift) || swipeLeft == true){
+                DashLeft = true;
+                DashRight = false;
                 dir = 1;
                 Dash();
                 swipeLeft = false;
                 
             } else if(Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftShift) || swipeRight == true){
+                DashLeft = false;
+                DashRight = true;
                 dir = 2;
                 Dash();
                 swipeRight = false;
@@ -475,14 +479,14 @@ public class Move : MonoBehaviour
             
 
             if(GetComponent<SwipeTest>().DashLeft == true || DashLeft == true || swipeLeft == true){
-                Debug.Log("liike vasen" + GetComponent<SwipeTest>().DashLeft + DashLeft + swipeLeft);
+                //Debug.Log("liike vasen" + GetComponent<SwipeTest>().DashLeft + DashLeft + swipeLeft);
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.left * dashSpeed;
                 DashLeft = false;
                 swipeLeft = false;
                 //Debug.Log("Tuleeko vasen " + GetComponent<SwipeTest>().DashLeft + DashLeft);
             }else if (GetComponent<SwipeTest>().DashRight == true || DashRight == true || swipeRight == true){
-                Debug.Log("liike oikea");
+                //Debug.Log("liike oikea");
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.right * dashSpeed;
                 DashRight = false;
