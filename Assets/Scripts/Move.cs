@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
-//using UnityStandardAssets.CrossPlatformInput;
 
 
 public class Move : MonoBehaviour
 {
     public Animator animator;
     private Rigidbody2D rb;
+    public GameObject Player;
     public GameObject MainChar;
     public GameObject död;
     private float dirX;
@@ -22,15 +22,15 @@ public class Move : MonoBehaviour
     private int dashDamage;
     public int playerHealth = 1;
     public float attackRate = 2f;
-    //float nextAttackTime = 0f;
     private bool IsAttacking = false;
     private bool Left = false;
     private bool Right = false;
-    private bool MouseLeft = false;
-    private bool MouseRight = false;
     public float position;
     private int d = 0;
     private int i;
+    public static int rubies;
+    private Vector2 PosForCam;
+    private Vector2 PlayerPos;
     
 
     //public float CollisionTime = 2f;
@@ -51,10 +51,10 @@ public class Move : MonoBehaviour
     public float startDashTime;
     private int dir;
     private float dashaus;
-    private bool IsDashing;
+    //private bool IsDashing;
     private bool DashLeft;
     private bool DashRight;
-    private bool toimisko = false;
+    //private bool toimisko = false;
     //DASH//////////////////
 
     //SWIPE/////////////////////
@@ -75,12 +75,13 @@ public class Move : MonoBehaviour
         i = 0;
         rageBar.SetHealth(playerHealth);
         rageBar1.SetHealth(playerHealth);
-
         dashTime = startDashTime;
-        dashaus = GetComponent<SwipeTest>().dashTime;
-
         MainChar.SetActive(true);
         död.SetActive(false);
+        rubies = PlayerPrefs.GetInt ("rubies", rubies);
+        PosForCam = transform.position;
+        PlayerPos = Player.transform.position;
+        
     }
 
     // Update is called once per frame
@@ -88,11 +89,14 @@ public class Move : MonoBehaviour
     {
         position = transform.position.x;
         tap = tapLeft = tapRight = swipeLeft = swipeRight = false;
-        //DashLeft = GetComponent<SwipeTest>().DashLeft;
-        //DashRight = GetComponent<SwipeTest>().DashRight;
         död.transform.position = MainChar.transform.position;
         död.transform.rotation = MainChar.transform.rotation;
-        
+        PlayerPrefs.SetInt ("rubies", rubies);
+        //Debug.Log(rubies);
+        PosForCam = transform.localPosition;
+        PlayerPos = Player.transform.position;
+        Player.transform.position = PosForCam + new Vector2(-1.35f,- 3.47f);
+        Debug.Log(PosForCam + PlayerPos);
         
         #region Swipe
         //SWIPE/////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +124,7 @@ public class Move : MonoBehaviour
                 tapRequested = true;
                 IsDraging = true;
                 startTouch = Input.touches[0].position;
-                IsDashing = false;
+                //IsDashing = false;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
@@ -157,7 +161,6 @@ public class Move : MonoBehaviour
                 if(x < 0){
                     swipeLeft = true;
                     swipeRight = false;
-                    //Debug.Log("Kui monta kutsua vasen");
                     if(m_FacingRight){
                         Flip();
                     }
@@ -165,7 +168,6 @@ public class Move : MonoBehaviour
                 else if(x > 0){
                     swipeRight = true;
                     swipeLeft = false;
-                    //Debug.Log("Kui monta kutsua oikia");
                     if(!m_FacingRight){
                         Flip();
                     }
@@ -183,12 +185,8 @@ public class Move : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            
-            //Vector3 touchPosition = Input.GetTouch( 0 ).position;
             touchPosition.z =0;
-            touchPosition.y =-4;
-            //direction = (touchPosition - transform.position);
-            //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
+            touchPosition.y =-4;            
             // Which direction?
             
              
@@ -196,24 +194,14 @@ public class Move : MonoBehaviour
             {
                 if (m_FacingRight)
                 {
-                    //if(Time.time >= nextAttackTime){
-                    //transform.Translate (Vector3.right * moveSpeed);
                     tapRight = true;
                     Attack();
-                    //Moves();
-                    
-                    //}
                 }
                 else 
                 {
-                    Flip();
-                    //if(Time.time >= nextAttackTime){
-                    //transform.Translate (Vector3.right * moveSpeed);
+                    Flip();                    
                     tapRight = true;
-                    Attack();                   
-                    //Moves();
-                    
-                    //}
+                    Attack();
                 }
                 
             }
@@ -221,24 +209,15 @@ public class Move : MonoBehaviour
             {
                 if(m_FacingRight)
                 {
-                    Flip();
-                    //if(Time.time >= nextAttackTime){
-                    //transform.Translate (Vector3.left * moveSpeed);
+                    Flip();                    
                     tapLeft = true;
                     Attack();
-                    //Moves();
                     
-                    //}
                 }
                 else
-                {
-                    //if(Time.time >= nextAttackTime){
-                    //transform.Translate (Vector3.left * moveSpeed);
+                {                    
                     tapLeft = true;
-                    Attack();
-                    //Moves();
-                    
-                    //}
+                    Attack();                    
                 }
 
                 
@@ -252,7 +231,6 @@ public class Move : MonoBehaviour
         //KEYBOARD MOVE & ATTACK////////////////////////////////////
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             Left = true;
-            //transform.Translate (Vector3.left * moveSpeed);
             if(m_FacingRight){
                 Flip();
                 Attack();
@@ -263,7 +241,6 @@ public class Move : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             Right = true;
-            //transform.Translate (Vector3. right * moveSpeed);
             if(m_FacingRight){
                 Attack();
             }
@@ -275,8 +252,7 @@ public class Move : MonoBehaviour
         //KEYBOARD MOVE & ATTACK////////////////////////////////////END
         #endregion
 
-        //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
-        //rb.velocity = new Vector2(dirX, 0f);
+        
         {
             Moves();
         }
@@ -288,7 +264,6 @@ public class Move : MonoBehaviour
                 animator.SetTrigger("Death");
                 rb.simulated = false;
                 i++;
-                //Die();
             }
         }
         //QUITE SELF EXPALAINATORY///////
@@ -321,12 +296,10 @@ public class Move : MonoBehaviour
 
                 if(dir == 1){
                     DashLeft = true;
-                    //Dash();
-                    //Debug.Log("Kui monta kutsua vasen");
+                    
                 }else if(dir == 2){
                     DashRight = true;
-                    //Dash();
-                    //Debug.Log("Kui monta kutsua oikia");
+                    
                 }
             }
         }
@@ -407,12 +380,7 @@ public class Move : MonoBehaviour
                     rageBar1.SetHealth(playerHealth);
                 }
             }
-            //nextAttackTime = Time.time + 1f / attackRate;
             direction = (touchPosition - transform.position);
-            //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
-            //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
-        
-           
             
         }
     }
@@ -434,11 +402,8 @@ public class Move : MonoBehaviour
                         rageBar.SetHealth(playerHealth);
                         rageBar1.SetHealth(playerHealth);
                     }
-                }
-                //nextAttackTime = Time.time + 1f / attackRate;
-                direction = (touchPosition - transform.position);
-                //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
-                //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
+                }                
+                direction = (touchPosition - transform.position);            
             }else {
                // Damage them
                
@@ -454,10 +419,8 @@ public class Move : MonoBehaviour
                         rageBar1.SetHealth(playerHealth);
                     }
                 }
-                //nextAttackTime = Time.time + 1f / attackRate;
-                direction = (touchPosition - transform.position);
-                //rb.velocity = new Vector2(direction.x, direction.y * moveSpeed);
-                //dirX = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed; 
+                
+                direction = (touchPosition - transform.position);               
             }
     }
     void OnDrawGizmosSelected()
@@ -470,28 +433,24 @@ public class Move : MonoBehaviour
 
     public void Dash(){
         if(playerHealth > 5 && d < 1){    
-            playerHealth -= 5;
-            //animator.SetTrigger("Dash");
-            IsDashing = true;
+            playerHealth -= 5;        
+            //IsDashing = true;
             rageBar.SetHealth(playerHealth);
             rageBar1.SetHealth(playerHealth);
             d++;
             
 
-            if(GetComponent<SwipeTest>().DashLeft == true || DashLeft == true || swipeLeft == true){
-                //Debug.Log("liike vasen" + GetComponent<SwipeTest>().DashLeft + DashLeft + swipeLeft);
+            if(DashLeft == true || swipeLeft == true){                
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.left * dashSpeed;
                 DashLeft = false;
                 swipeLeft = false;
-                //Debug.Log("Tuleeko vasen " + GetComponent<SwipeTest>().DashLeft + DashLeft);
-            }else if (GetComponent<SwipeTest>().DashRight == true || DashRight == true || swipeRight == true){
-                //Debug.Log("liike oikea");
+                
+            }else if (DashRight == true || swipeRight == true){                
                 animator.SetTrigger("Dash");
                 rb.velocity = Vector2.right * dashSpeed;
                 DashRight = false;
                 swipeRight = false;
-                //Debug.Log("Tuleeko oikia " + GetComponent<SwipeTest>().DashRight + DashRight);
             }
             
             // Detect enemies in range of attack
@@ -509,18 +468,16 @@ public class Move : MonoBehaviour
                         rageBar1.SetHealth(playerHealth);
                     }
                 }
-                //animator.ResetTrigger("Dash");
-                
         }
         d = 0;
         
     }
 
-    //private void OnCollisionStay2D(Collision2D collision)
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Enemy"  /*&& !IsDashing*/)
+        if (collision.gameObject.tag == "Enemy")
         {   
             currentDamageTime += Time.deltaTime;
             if(currentDamageTime > damageTime) {
@@ -536,7 +493,6 @@ public class Move : MonoBehaviour
 
     private void Die()
     {
-        //animator.SetTrigger("Death");
         paussiMenu.Death();
     }
     
@@ -549,6 +505,17 @@ public class Move : MonoBehaviour
     private void ResetAttack(){
 
         IsAttacking = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
+        if (other.gameObject.CompareTag("rubies"))
+                {
+                     //other.gameObject.SetActive(false);
+                     rubies++;
+                     Destroy(other.gameObject);
+                }
     }
     
 

@@ -11,11 +11,15 @@ public class PaussiMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject deathMenuUI;
     public GameObject MainChar;
+    public GameObject MainCharViikate;
     public GameObject död;
+    public GameObject dödScythe;
+    private int choice;
     
 
     void Start() {
-        Time.timeScale = 1f;   
+        Time.timeScale = 1f;
+        choice = MainMenu.choice;   
     }
 
     void Update()
@@ -33,7 +37,8 @@ public class PaussiMenu : MonoBehaviour
         }
         död.transform.position = MainChar.transform.position;
         död.transform.rotation = MainChar.transform.rotation;
-        
+        dödScythe.transform.position = MainCharViikate.transform.position;
+        dödScythe.transform.rotation = MainCharViikate.transform.rotation;
     }
 
     public void Resume()
@@ -73,12 +78,18 @@ public class PaussiMenu : MonoBehaviour
     public void Death()
     {
        död.transform.localScale = MainChar.transform.localScale;
+       dödScythe.transform.localScale = MainCharViikate.transform.localScale;
        deathMenuUI.SetActive(true);
        MainChar.SetActive(false);
-       död.SetActive(true);
+       MainCharViikate.SetActive(false);
        Time.timeScale = 0f;
        GameIsPaused = true;
        ScoreScript.scoreValue = 0;
+       if(choice == 1){
+            död.SetActive(true);
+       }else if( choice == 2){
+            dödScythe.SetActive(true);
+       }
     }
 }
 

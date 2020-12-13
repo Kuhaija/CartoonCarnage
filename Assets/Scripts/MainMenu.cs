@@ -10,9 +10,12 @@ public class MainMenu : MonoBehaviour
     public GameObject Map;
     public GameObject Open;
     public GameObject Closed;
+    public GameObject BaseballBat;
+    public GameObject Scythe;
 
     private bool isMuted;
     int highscoreNarc;
+    public  static int choice;
 
 	void Start ()
 	{
@@ -21,6 +24,15 @@ public class MainMenu : MonoBehaviour
 
 
 	}
+    void Update() 
+    {
+        /*if(choice !=1 && choice !=2)
+        {
+            Scythe.SetActive(true);
+            BaseballBat.SetActive(true);
+        }*/
+        
+    }
 
 
     public void PlayGame()
@@ -49,8 +61,8 @@ public class MainMenu : MonoBehaviour
     public void ChooseMap()
     {
         Map.SetActive(true);
-       highscoreNarc = PlayerPrefs.GetInt ("highscoreNarc", highscoreNarc);
-        //Debug.Log(highscore);
+        highscoreNarc = PlayerPrefs.GetInt ("highscoreNarc", highscoreNarc);
+
         if(highscoreNarc < 10000){
             Closed.SetActive(true);
         }else if (highscoreNarc >= 10000) {
@@ -67,7 +79,30 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
-    
+    public void bat()
+    {
+        choice = 1;
+        /*if(choice == 0){
+            //Scythe.SetActive(false);
+            choice = 1;
+            Debug.Log(choice);
+        }else if(choice == 1){
+            //Scythe.SetActive(true);
+            choice = 0;
+        }*/
+    }
 
+    public void scythe()
+    {
+        choice = 2;
+        /*if(choice == 0){
+            //Scythe.SetActive(false);
+            choice = 2;
+            Debug.Log(choice);
+        }else if(choice == 2){
+            //Scythe.SetActive(true);
+            choice = 0;
+        }*/
+    }
 }
 

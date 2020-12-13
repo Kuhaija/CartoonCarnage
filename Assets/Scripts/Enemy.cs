@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > screenBounds.x * 1.5)
+        if (transform.position.x > screenBounds.x * 5)
         {
             Destroy(this.gameObject);
         }
