@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
+using Cinemachine;
 
 
 public class Move : MonoBehaviour
@@ -33,6 +34,8 @@ public class Move : MonoBehaviour
     private Vector2 PlayerPos;
      [SerializeField]
     private Text rubieCount;
+    public int choice = 2;
+    private CinemachineVirtualCamera vcam;
     
     //From Other Script///////////////
     private int RageGainBat;
@@ -90,6 +93,8 @@ public class Move : MonoBehaviour
         MainChar.SetActive(true);
         dead.SetActive(false);
         rubies = PlayerPrefs.GetInt ("rubies", rubies);
+        //vcam = GetComponent<CinemachineVirtualCamera>();
+        //choice = MainMenu.choice;
 
         RageGainBat = PlayerPrefs.GetInt ("RageGainBat", RageGainBat);
         AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeedBat", AttackSpeedBat);
@@ -99,6 +104,8 @@ public class Move : MonoBehaviour
         AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeedScythe", AttackSpeedScythe);
         DashLengthScythe = PlayerPrefs.GetInt ("DashLengthScythe", DashLengthScythe);
         
+        
+
         switch (RageGainBat)
         {
             case 1:
@@ -207,6 +214,8 @@ public class Move : MonoBehaviour
         dead.transform.rotation = MainChar.transform.rotation;
         
         rubieCount.text = ": " + rubies;
+
+        
         
         #region Swipe
         //SWIPE/////////////////////////////////////////////////////////////////////////////////////////////

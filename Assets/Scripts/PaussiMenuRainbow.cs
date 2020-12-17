@@ -12,8 +12,8 @@ public class PaussiMenuRainbow : MonoBehaviour
     public GameObject deathMenuUI;
     public GameObject MainChar;
     public GameObject MainCharViikate;
-    public GameObject död;
-    public GameObject dödScythe;
+    public GameObject dead;
+    public GameObject deadScythe;
     private int choice;
     
 
@@ -35,10 +35,10 @@ public class PaussiMenuRainbow : MonoBehaviour
             }
 
         }
-        död.transform.position = MainChar.transform.position;
-        död.transform.rotation = MainChar.transform.rotation;
-        dödScythe.transform.position = MainCharViikate.transform.position;
-        dödScythe.transform.rotation = MainCharViikate.transform.rotation;
+        dead.transform.position = MainChar.transform.position;
+        dead.transform.rotation = MainChar.transform.rotation;
+        deadScythe.transform.position = MainCharViikate.transform.position;
+        deadScythe.transform.rotation = MainCharViikate.transform.rotation;
     }
 
     public void Resume()
@@ -77,8 +77,8 @@ public class PaussiMenuRainbow : MonoBehaviour
     }
     public void Death()
     {
-       död.transform.localScale = MainChar.transform.localScale;
-       dödScythe.transform.localScale = MainCharViikate.transform.localScale;
+       dead.transform.localScale = MainChar.transform.localScale;
+       deadScythe.transform.localScale = MainCharViikate.transform.localScale;
        deathMenuUI.SetActive(true);
        MainChar.SetActive(false);
        MainCharViikate.SetActive(false);
@@ -86,9 +86,9 @@ public class PaussiMenuRainbow : MonoBehaviour
        GameIsPaused = true;
        ScoreScript.scoreValue = 0;
        if(choice == 1){
-            död.SetActive(true);
+            dead.SetActive(true);
        }else if( choice == 2){
-            dödScythe.SetActive(true);
+            deadScythe.SetActive(true);
        }
     }
 }

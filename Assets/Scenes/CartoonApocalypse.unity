@@ -2144,6 +2144,7 @@ GameObject:
   - component: {fileID: 765713162}
   - component: {fileID: 765713163}
   - component: {fileID: 765713164}
+  - component: {fileID: 765713165}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -2218,6 +2219,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &765713165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765713161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84af848b783ae14f96b1e6873fe2b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 2
+  MainChar: {fileID: 1340461061}
+  MainCharViikate: {fileID: 891654032}
 --- !u!1 &780004999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &891654033
 Transform:
   m_ObjectHideFlags: 0
@@ -2760,6 +2776,7 @@ MonoBehaviour:
   attackRate: 2
   position: 0
   rubieCount: {fileID: 883771294}
+  choice: 2
   rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1035870739}
@@ -3530,8 +3547,8 @@ MonoBehaviour:
   deathMenuUI: {fileID: 0}
   MainChar: {fileID: 1340461061}
   MainCharViikate: {fileID: 891654032}
-  "d\xF6d": {fileID: 1553774001}
-  "d\xF6dScythe": {fileID: 326517214}
+  dead: {fileID: 1553774001}
+  deadScythe: {fileID: 326517214}
 --- !u!1 &1224989881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,7 +3836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1340461062
 Animator:
   serializedVersion: 3
@@ -3913,6 +3930,7 @@ MonoBehaviour:
   attackRate: 2
   position: 0
   rubieCount: {fileID: 883771294}
+  choice: 0
   rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1035870739}
@@ -5272,8 +5290,8 @@ MonoBehaviour:
   deathMenuUI: {fileID: 303436583}
   MainChar: {fileID: 1340461061}
   MainCharViikate: {fileID: 891654032}
-  "d\xF6d": {fileID: 1553774001}
-  "d\xF6dScythe": {fileID: 326517214}
+  dead: {fileID: 1553774001}
+  deadScythe: {fileID: 326517214}
 --- !u!1 &1728729046
 GameObject:
   m_ObjectHideFlags: 3

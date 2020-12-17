@@ -98,6 +98,7 @@ public class MainMenu : MonoBehaviour
         AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeedScythe", AttackSpeedScythe);
         DashLengthScythe = PlayerPrefs.GetInt ("DashLengthScythe", DashLengthScythe);
     
+        
     }
     void Update() 
     {

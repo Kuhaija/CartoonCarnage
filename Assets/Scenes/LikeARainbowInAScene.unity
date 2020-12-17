@@ -1513,7 +1513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.106686234, y: 0.08000016, z: -11.99}
+  m_LocalPosition: {x: 0.11367613, y: 0.08000016, z: -11.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765713162}
@@ -1888,7 +1888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &593602818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,10 +1902,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7426008709355058204, guid: 362be743ae5f2d54baf0ff17a51732be, type: 3}
-  - {fileID: 2529189265469626379, guid: 0885e11ac8334394aa86b5366283d53e, type: 3}
-  - {fileID: 6797622316036465170, guid: e6df0aaf4d0457b499069113f5085b37, type: 3}
-  - {fileID: 7199886166118569874, guid: 88ce25809b06f3a4eac72a99bf354c8b, type: 3}
+  - {fileID: 1007672910934139163, guid: 50be8a6aadff85f4f925489b3f7a149b, type: 3}
+  - {fileID: 6525790187761094738, guid: 547c43bd54ca1274591effab730574c1, type: 3}
+  - {fileID: 8155349366940209892, guid: 3063ae0e2fc06424ab0dc8b26d8ec149, type: 3}
   xPos: 0
   enemyCount: 0
   wait_time: 0
@@ -2002,6 +2001,7 @@ MonoBehaviour:
   attackRate: 2
   position: 0
   rubieCount: {fileID: 1108301950}
+  choice: 2
   rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1083117909}
@@ -2287,7 +2287,7 @@ GameObject:
   - component: {fileID: 654425750}
   - component: {fileID: 654425749}
   m_Layer: 9
-  m_Name: "d\xF6dScythe"
+  m_Name: deadScythe
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2644,6 +2644,7 @@ GameObject:
   - component: {fileID: 765713162}
   - component: {fileID: 765713163}
   - component: {fileID: 765713164}
+  - component: {fileID: 765713165}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -2718,6 +2719,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &765713165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765713161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84af848b783ae14f96b1e6873fe2b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 0
+  MainChar: {fileID: 593602817}
+  MainCharViikate: {fileID: 1372198284}
 --- !u!1 &841377508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,8 +3582,8 @@ MonoBehaviour:
   deathMenuUI: {fileID: 303436583}
   MainChar: {fileID: 593602817}
   MainCharViikate: {fileID: 1372198284}
-  "d\xF6d": {fileID: 1443681942}
-  "d\xF6dScythe": {fileID: 654425747}
+  dead: {fileID: 1443681942}
+  deadScythe: {fileID: 654425747}
 --- !u!1 &1230643283
 GameObject:
   m_ObjectHideFlags: 0
@@ -3933,7 +3949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1372198285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3947,10 +3963,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7426008709355058204, guid: 362be743ae5f2d54baf0ff17a51732be, type: 3}
-  - {fileID: 2529189265469626379, guid: 0885e11ac8334394aa86b5366283d53e, type: 3}
-  - {fileID: 6797622316036465170, guid: e6df0aaf4d0457b499069113f5085b37, type: 3}
-  - {fileID: 7199886166118569874, guid: 88ce25809b06f3a4eac72a99bf354c8b, type: 3}
+  - {fileID: 1007672910934139163, guid: 50be8a6aadff85f4f925489b3f7a149b, type: 3}
+  - {fileID: 6525790187761094738, guid: 547c43bd54ca1274591effab730574c1, type: 3}
+  - {fileID: 8155349366940209892, guid: 3063ae0e2fc06424ab0dc8b26d8ec149, type: 3}
   xPos: 0
   enemyCount: 0
   wait_time: 0
@@ -4047,6 +4062,7 @@ MonoBehaviour:
   attackRate: 2
   position: 0
   rubieCount: {fileID: 1108301950}
+  choice: 2
   rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1083117909}
@@ -4656,7 +4672,7 @@ GameObject:
   - component: {fileID: 1443681944}
   - component: {fileID: 1443681943}
   m_Layer: 9
-  m_Name: "d\xF6d"
+  m_Name: dead
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5439,8 +5455,8 @@ MonoBehaviour:
   deathMenuUI: {fileID: 303436583}
   MainChar: {fileID: 593602817}
   MainCharViikate: {fileID: 1372198284}
-  "d\xF6d": {fileID: 1443681942}
-  "d\xF6dScythe": {fileID: 654425747}
+  dead: {fileID: 1443681942}
+  deadScythe: {fileID: 654425747}
 --- !u!114 &1670741156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5457,8 +5473,8 @@ MonoBehaviour:
   deathMenuUI: {fileID: 303436583}
   MainChar: {fileID: 593602817}
   MainCharViikate: {fileID: 1372198284}
-  "d\xF6d": {fileID: 1443681942}
-  "d\xF6dScythe": {fileID: 654425747}
+  dead: {fileID: 1443681942}
+  deadScythe: {fileID: 654425747}
 --- !u!1 &1706166507
 GameObject:
   m_ObjectHideFlags: 0
