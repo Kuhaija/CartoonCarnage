@@ -1513,7 +1513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11367613, y: 0.08000016, z: -11.99}
+  m_LocalPosition: {x: 0.106686234, y: 0.08000016, z: -11.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765713162}
@@ -4041,9 +4041,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
-  attackDamage: 100
+  attackDamage: 150
   damageMultiplier: 3
-  playerHealth: 4
+  playerHealth: 6
   attackRate: 2
   position: 0
   rubieCount: {fileID: 1108301950}
@@ -4532,6 +4532,8 @@ MonoBehaviour:
   DashLengthScythe2Taken: {fileID: 0}
   DashLengthScythe3Taken: {fileID: 0}
   rubieCount: {fileID: 0}
+  rubieCountBat: {fileID: 0}
+  rubieCountScythe: {fileID: 0}
   rubies: 0
 --- !u!114 &1399110335
 MonoBehaviour:

@@ -2754,7 +2754,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
-  attackDamage: 100
+  attackDamage: 150
   damageMultiplier: 3
   playerHealth: 4
   attackRate: 2
@@ -4439,6 +4439,8 @@ MonoBehaviour:
   DashLengthScythe2Taken: {fileID: 0}
   DashLengthScythe3Taken: {fileID: 0}
   rubieCount: {fileID: 0}
+  rubieCountBat: {fileID: 0}
+  rubieCountScythe: {fileID: 0}
   rubies: 0
 --- !u!114 &1399110335
 MonoBehaviour:
