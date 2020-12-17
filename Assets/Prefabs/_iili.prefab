@@ -238,6 +238,8 @@ MonoBehaviour:
   attackDamage: 2
   isDead: 0
   blood: {fileID: 6495805270398596153, guid: 8f606e9436625384e93739f056743167, type: 3}
+  ruby: {fileID: 517266047451510381, guid: ba0fe4c53d7e81a48928edc10f91be89, type: 3}
+  m_dropChance: 0.1
 --- !u!61 &7388404032600988116
 BoxCollider2D:
   m_ObjectHideFlags: 0

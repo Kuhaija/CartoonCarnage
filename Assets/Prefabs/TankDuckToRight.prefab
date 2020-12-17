@@ -133,6 +133,8 @@ MonoBehaviour:
   attackDamage: 1
   isDead: 0
   blood: {fileID: 6495805270398596153, guid: 8f606e9436625384e93739f056743167, type: 3}
+  ruby: {fileID: 517266047451510381, guid: ba0fe4c53d7e81a48928edc10f91be89, type: 3}
+  m_dropChance: 0.1
 --- !u!114 &9091763626438103509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  m_FacingRight: 1
 --- !u!50 &9091763626438103498
 Rigidbody2D:
   serializedVersion: 4

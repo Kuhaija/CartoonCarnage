@@ -1172,6 +1172,43 @@ Transform:
   m_Father: {fileID: 1443681947}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &475408907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475408908}
+  m_Layer: 5
+  m_Name: Ruby
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &475408908
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475408907}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1108301948}
+  - {fileID: 1366423863}
+  m_Father: {fileID: 1399110333}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -24.50003}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &490630969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,7 +1513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.116962194, y: 0.08000016, z: -11.99}
+  m_LocalPosition: {x: 0.11367613, y: 0.08000016, z: -11.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765713162}
@@ -1953,7 +1990,7 @@ MonoBehaviour:
   animator: {fileID: 593602819}
   Player: {fileID: 912069668}
   MainChar: {fileID: 593602817}
-  "d\xF6d": {fileID: 1443681942}
+  dead: {fileID: 1443681942}
   attackPoint: {fileID: 677351763}
   attackRange: 0.5
   enemyLayers:
@@ -1964,6 +2001,8 @@ MonoBehaviour:
   playerHealth: 4
   attackRate: 2
   position: 0
+  rubieCount: {fileID: 1108301950}
+  rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1083117909}
   rageBar1: {fileID: 101461143}
@@ -3177,6 +3216,85 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1108301947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108301948}
+  - component: {fileID: 1108301949}
+  - component: {fileID: 1108301950}
+  m_Layer: 5
+  m_Name: Rubies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1108301948
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108301947}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475408908}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -112.52, y: 144.5}
+  m_SizeDelta: {x: 147.38681, y: 44.302048}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1108301949
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108301947}
+  m_CullTransparentMesh: 0
+--- !u!114 &1108301950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108301947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 28
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &1112360427
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,8 +3663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011683, y: -29.1}
-  m_SizeDelta: {x: 98.01941, y: 30}
+  m_AnchoredPosition: {x: -40.21, y: -29.1}
+  m_SizeDelta: {x: 270.97333, y: 58.200035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239697465
 MonoBehaviour:
@@ -3570,10 +3688,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 28
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -3718,6 +3836,81 @@ Transform:
   m_Father: {fileID: 1443681947}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 175.875}
+--- !u!1 &1366423862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1366423863}
+  - component: {fileID: 1366423865}
+  - component: {fileID: 1366423864}
+  m_Layer: 5
+  m_Name: RubiesImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1366423863
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366423862}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475408908}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -235.2, y: 144.5}
+  m_SizeDelta: {x: 97.97455, y: 25.180882}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1366423864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366423862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 97da0ac5d7c8b4d45808b112fa6ce7a7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1366423865
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366423862}
+  m_CullTransparentMesh: 0
 --- !u!1 &1372198284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +4035,7 @@ MonoBehaviour:
   animator: {fileID: 1372198286}
   Player: {fileID: 912069668}
   MainChar: {fileID: 1372198284}
-  "d\xF6d": {fileID: 1443681942}
+  dead: {fileID: 654425747}
   attackPoint: {fileID: 268358344}
   attackRange: 0.56
   enemyLayers:
@@ -3853,6 +4046,8 @@ MonoBehaviour:
   playerHealth: 4
   attackRate: 2
   position: 0
+  rubieCount: {fileID: 1108301950}
+  rageGain: 0
   touchPosition: {x: 0, y: 0, z: 0}
   rageBar: {fileID: 1083117909}
   rageBar1: {fileID: 101461143}
@@ -4178,6 +4373,7 @@ GameObject:
   - component: {fileID: 1399110331}
   - component: {fileID: 1399110330}
   - component: {fileID: 1399110334}
+  - component: {fileID: 1399110335}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4263,6 +4459,7 @@ RectTransform:
   - {fileID: 1562110939}
   - {fileID: 1083117908}
   - {fileID: 101461142}
+  - {fileID: 475408908}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4278,7 +4475,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399110329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c506befbed925d46ad7ad1b30991e03, type: 3}
   m_Name: 
@@ -4289,6 +4486,65 @@ MonoBehaviour:
   Closed: {fileID: 0}
   BaseballBat: {fileID: 0}
   Scythe: {fileID: 0}
+  ScytheNO: {fileID: 0}
+  ScytheBuy: {fileID: 0}
+  Weapons: {fileID: 0}
+  RageGainBat: 0
+  RageGainBat1: {fileID: 0}
+  RageGainBat2: {fileID: 0}
+  RageGainBat3: {fileID: 0}
+  RageGainBat1Taken: {fileID: 0}
+  RageGainBat2Taken: {fileID: 0}
+  RageGainBat3Taken: {fileID: 0}
+  AttackSpeedBat: 0
+  AttackSpeedBat1: {fileID: 0}
+  AttackSpeedBat2: {fileID: 0}
+  AttackSpeedBat3: {fileID: 0}
+  AttackSpeedBat1Taken: {fileID: 0}
+  AttackSpeedBat2Taken: {fileID: 0}
+  AttackSpeedBat3Taken: {fileID: 0}
+  DashLengthBat: 0
+  DashLengthBat1: {fileID: 0}
+  DashLengthBat2: {fileID: 0}
+  DashLengthBat3: {fileID: 0}
+  DashLengthBat1Taken: {fileID: 0}
+  DashLengthBat2Taken: {fileID: 0}
+  DashLengthBat3Taken: {fileID: 0}
+  RageGainScythe: 0
+  RageGainScythe1: {fileID: 0}
+  RageGainScythe2: {fileID: 0}
+  RageGainScythe3: {fileID: 0}
+  RageGainScythe1Taken: {fileID: 0}
+  RageGainScythe2Taken: {fileID: 0}
+  RageGainScythe3Taken: {fileID: 0}
+  AttackSpeedScythe: 0
+  AttackSpeedScythe1: {fileID: 0}
+  AttackSpeedScythe2: {fileID: 0}
+  AttackSpeedScythe3: {fileID: 0}
+  AttackSpeedScythe1Taken: {fileID: 0}
+  AttackSpeedScythe2Taken: {fileID: 0}
+  AttackSpeedScythe3Taken: {fileID: 0}
+  DashLengthScythe: 0
+  DashLengthScythe1: {fileID: 0}
+  DashLengthScythe2: {fileID: 0}
+  DashLengthScythe3: {fileID: 0}
+  DashLengthScythe1Taken: {fileID: 0}
+  DashLengthScythe2Taken: {fileID: 0}
+  DashLengthScythe3Taken: {fileID: 0}
+  rubieCount: {fileID: 0}
+  rubies: 0
+--- !u!114 &1399110335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399110329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a8d0eebcca5de4d969588aefd6769a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1407528677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,9 +4971,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1399110334}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: MutePressed
+      - m_Target: {fileID: 1399110335}
+        m_TargetAssemblyTypeName: MuteController, Assembly-CSharp
+        m_MethodName: Mute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6186,7 +6442,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Arena
-    clip: {fileID: 8300000, guid: 39ac2aeac2748a244a75c7c0820586c2, type: 3}
+    clip: {fileID: 8300000, guid: c1fa9c64f442203478385955ce33030c, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

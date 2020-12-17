@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject Player;
     public GameObject MainChar;
-    public GameObject död;
+    public GameObject dead;
     private float dirX;
     private float moveSpeed = 0.5f;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -31,7 +31,16 @@ public class Move : MonoBehaviour
     public static int rubies;
     private Vector2 PosForCam;
     private Vector2 PlayerPos;
+     [SerializeField]
+    private Text rubieCount;
     
+    //From Other Script///////////////
+    private int RageGainBat;
+    private int AttackSpeedBat;
+    private int DashLengthBat;
+    public int rageGain;
+    //////////////////////////////////
+
 
     //public float CollisionTime = 2f;
     Touch touch;
@@ -51,10 +60,9 @@ public class Move : MonoBehaviour
     public float startDashTime;
     private int dir;
     private float dashaus;
-    //private bool IsDashing;
     private bool DashLeft;
     private bool DashRight;
-    //private bool toimisko = false;
+    
     //DASH//////////////////
 
     //SWIPE/////////////////////
@@ -77,11 +85,61 @@ public class Move : MonoBehaviour
         rageBar1.SetHealth(playerHealth);
         dashTime = startDashTime;
         MainChar.SetActive(true);
-        död.SetActive(false);
+        dead.SetActive(false);
         rubies = PlayerPrefs.GetInt ("rubies", rubies);
-        PosForCam = transform.position;
-        PlayerPos = Player.transform.position;
+
+        RageGainBat = PlayerPrefs.GetInt ("RageGain", RageGainBat);
+        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedBat);
+        DashLengthBat = PlayerPrefs.GetInt ("DashLength", DashLengthBat);
         
+        switch (RageGainBat)
+        {
+            case 1:
+                rageGain = 2;
+                break;
+            case 2:
+                rageGain = 4;
+                break;
+            case 3:
+                rageGain = 7;
+                break;
+            default:
+                rageGain = 1;
+                break;
+        }
+
+        switch (AttackSpeedBat)
+        {
+            case 1:
+                animator.SetFloat("speed", 1.25f);
+                break;
+            case 2:
+                animator.SetFloat("speed", 1.5f);
+                break;
+            case 3:
+                animator.SetFloat("speed", 1.75f);
+                break;
+            default:
+                animator.SetFloat("speed", 1f);
+                break;
+        }
+
+        switch (DashLengthBat)
+        {
+            case 1:
+                dashSpeed += 2;
+                break;
+            case 2:
+                dashSpeed += 4;
+                break;
+            case 3:
+                dashSpeed += 6;
+                break;
+            default:
+                
+                break;
+        }
+
     }
 
     // Update is called once per frame
@@ -89,14 +147,10 @@ public class Move : MonoBehaviour
     {
         position = transform.position.x;
         tap = tapLeft = tapRight = swipeLeft = swipeRight = false;
-        död.transform.position = MainChar.transform.position;
-        död.transform.rotation = MainChar.transform.rotation;
-        PlayerPrefs.SetInt ("rubies", rubies);
-        //Debug.Log(rubies);
-        PosForCam = transform.localPosition;
-        PlayerPos = Player.transform.position;
-        Player.transform.position = PosForCam + new Vector2(-1.35f,- 3.47f);
-        Debug.Log(PosForCam + PlayerPos);
+        dead.transform.position = MainChar.transform.position;
+        dead.transform.rotation = MainChar.transform.rotation;
+        
+        rubieCount.text = ": " + rubies;
         
         #region Swipe
         //SWIPE/////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +178,6 @@ public class Move : MonoBehaviour
                 tapRequested = true;
                 IsDraging = true;
                 startTouch = Input.touches[0].position;
-                //IsDashing = false;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
@@ -398,7 +451,7 @@ public class Move : MonoBehaviour
 
                     if (enemy.GetComponent<Enemy>().isDead)
                     {
-                        playerHealth++;
+                        playerHealth += rageGain;
                         rageBar.SetHealth(playerHealth);
                         rageBar1.SetHealth(playerHealth);
                     }
@@ -414,7 +467,7 @@ public class Move : MonoBehaviour
 
                     if (enemy.GetComponent<Enemy>().isDead)
                     {
-                        playerHealth++;
+                        playerHealth += rageGain;
                         rageBar.SetHealth(playerHealth);
                         rageBar1.SetHealth(playerHealth);
                     }
@@ -434,7 +487,6 @@ public class Move : MonoBehaviour
     public void Dash(){
         if(playerHealth > 5 && d < 1){    
             playerHealth -= 5;        
-            //IsDashing = true;
             rageBar.SetHealth(playerHealth);
             rageBar1.SetHealth(playerHealth);
             d++;
@@ -463,7 +515,7 @@ public class Move : MonoBehaviour
 
                     if (enemy.GetComponent<Enemy>().isDead)
                     {
-                        playerHealth++;
+                        playerHealth += rageGain;
                         rageBar.SetHealth(playerHealth);
                         rageBar1.SetHealth(playerHealth);
                     }
@@ -512,9 +564,9 @@ public class Move : MonoBehaviour
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
         if (other.gameObject.CompareTag("rubies"))
                 {
-                     //other.gameObject.SetActive(false);
                      rubies++;
                      Destroy(other.gameObject);
+                     PlayerPrefs.SetInt ("rubies", rubies);
                 }
     }
     

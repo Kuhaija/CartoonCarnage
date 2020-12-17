@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public int attackDamage = 1;
     public bool isDead = false;
     public GameObject blood;
+    public GameObject ruby;
+    public float m_dropChance = 1f / 10f;  // Set odds here - e.g. 1 in 10 chance.
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +78,10 @@ public class Enemy : MonoBehaviour
         ScoreScript.scoreValue += 100;
         Destroy(this.gameObject);
         isDead = true;
+        if(Random.Range(0f, 1f) <= m_dropChance )
+            {
+                Instantiate (ruby, transform.position, Quaternion.identity);
+            }
     }
 
     public void Attack()
