@@ -85,18 +85,18 @@ public class MainMenu : MonoBehaviour
 	{
 		isMuted = PlayerPrefs.GetInt("MUTED") == 1;
 		AudioListener.pause = isMuted;
-        PlayerPrefs.SetInt ("rubies", rubies);
+
         rubies = PlayerPrefs.GetInt ("rubies", rubies);
         ScytheIsBought = PlayerPrefs.GetInt ("scythe", ScytheIsBought);
         choice = 0;
-        
-        RageGainBat = PlayerPrefs.GetInt ("RageGain", RageGainBat);
-        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedBat);
-        DashLengthBat = PlayerPrefs.GetInt ("DashLength", DashLengthBat);
+
+        RageGainBat = PlayerPrefs.GetInt ("RageGainBat", RageGainBat);
+        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeedBat", AttackSpeedBat);
+        DashLengthBat = PlayerPrefs.GetInt ("DashLengthBat", DashLengthBat);
     
-        RageGainScythe = PlayerPrefs.GetInt ("RageGain", RageGainScythe);
-        AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedScythe);
-        DashLengthScythe = PlayerPrefs.GetInt ("DashLength", DashLengthScythe);
+        RageGainScythe = PlayerPrefs.GetInt ("RageGainScythe", RageGainScythe);
+        AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeedScythe", AttackSpeedScythe);
+        DashLengthScythe = PlayerPrefs.GetInt ("DashLengthScythe", DashLengthScythe);
     
     }
     void Update() 
@@ -104,7 +104,7 @@ public class MainMenu : MonoBehaviour
         rubieCount.text = "Rubies: " + rubies;
         rubieCountBat.text = "Rubies: " + rubies;
         rubieCountScythe.text = "Rubies: " + rubies;
-        
+
     }
 
 
@@ -167,7 +167,7 @@ public class MainMenu : MonoBehaviour
     }
     public void scytheNO()
     {
-        if(rubies > 10){
+        if(rubies >= 10){
             ScytheBuy.SetActive(true);
             Weapons.SetActive(false);
         }
@@ -178,9 +178,11 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt ("rubies", rubies);
         ScytheIsBought = 1;
         PlayerPrefs.SetInt ("scythe", ScytheIsBought);
+        weapon();
     }
 
     public void weapon(){
+        ScytheIsBought = PlayerPrefs.GetInt ("scythe", ScytheIsBought);
         if(ScytheIsBought == 1){
             Scythe.SetActive(true);
             ScytheNO.SetActive(false);
@@ -190,9 +192,9 @@ public class MainMenu : MonoBehaviour
  #region Bat related things
     public void batUpgrade(){
 
-        RageGainBat = PlayerPrefs.GetInt ("RageGain", RageGainBat);
-        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedBat);
-        DashLengthBat = PlayerPrefs.GetInt ("DashLength", DashLengthBat);
+        RageGainBat = PlayerPrefs.GetInt ("RageGainBat", RageGainBat);
+        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeedBat", AttackSpeedBat);
+        DashLengthBat = PlayerPrefs.GetInt ("DashLengthBat", DashLengthBat);
 
         switch(RageGainBat)
         {
@@ -267,7 +269,7 @@ public class MainMenu : MonoBehaviour
             RageGainBat = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainBat);
+            PlayerPrefs.SetInt ("RageGainBat", RageGainBat);
         }
     }
 
@@ -277,7 +279,7 @@ public class MainMenu : MonoBehaviour
             RageGainBat = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainBat);
+            PlayerPrefs.SetInt ("RageGainBat", RageGainBat);
         }
     }    
 
@@ -287,7 +289,7 @@ public class MainMenu : MonoBehaviour
             RageGainBat = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainBat);
+            PlayerPrefs.SetInt ("RageGainBat", RageGainBat);
         }
     }
 
@@ -298,7 +300,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedBat = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedBat);
+            PlayerPrefs.SetInt ("AttackSpeedBat", AttackSpeedBat);
         }
     }
 
@@ -308,7 +310,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedBat = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedBat);
+            PlayerPrefs.SetInt ("AttackSpeedBat", AttackSpeedBat);
         }
     }
 
@@ -318,7 +320,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedBat = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedBat);
+            PlayerPrefs.SetInt ("AttackSpeedBat", AttackSpeedBat);
         }
     }
 
@@ -329,7 +331,7 @@ public class MainMenu : MonoBehaviour
             DashLengthBat = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthBat);
+            PlayerPrefs.SetInt ("DashLengthBat", DashLengthBat);
         }
     }
 
@@ -339,7 +341,7 @@ public class MainMenu : MonoBehaviour
             DashLengthBat = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthBat);
+            PlayerPrefs.SetInt ("DashLengthBat", DashLengthBat);
         }
     }
 
@@ -349,7 +351,7 @@ public class MainMenu : MonoBehaviour
             DashLengthBat = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthBat);
+            PlayerPrefs.SetInt ("DashLengthBat", DashLengthBat);
         }
     }
     #endregion
@@ -357,9 +359,9 @@ public class MainMenu : MonoBehaviour
     #region Scythe related things
     public void ScytheUpgrade(){
 
-        RageGainScythe = PlayerPrefs.GetInt ("RageGain", RageGainScythe);
-        AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedScythe);
-        DashLengthScythe = PlayerPrefs.GetInt ("DashLength", DashLengthScythe);
+        RageGainScythe = PlayerPrefs.GetInt ("RageGainScythe", RageGainScythe);
+        AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeedScythe", AttackSpeedScythe);
+        DashLengthScythe = PlayerPrefs.GetInt ("DashLengthScythe", DashLengthScythe);
 
         switch(RageGainScythe)
         {
@@ -434,7 +436,7 @@ public class MainMenu : MonoBehaviour
             RageGainScythe = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainScythe);
+            PlayerPrefs.SetInt ("RageGainScythe", RageGainScythe);
         }
     }
 
@@ -444,7 +446,7 @@ public class MainMenu : MonoBehaviour
             RageGainScythe = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainScythe);
+            PlayerPrefs.SetInt ("RageGainScythe", RageGainScythe);
         }
     }
 
@@ -454,7 +456,7 @@ public class MainMenu : MonoBehaviour
             RageGainScythe = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("RageGain", RageGainScythe);
+            PlayerPrefs.SetInt ("RageGainScythe", RageGainScythe);
         }
     }
 
@@ -465,7 +467,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedScythe = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedScythe);
+            PlayerPrefs.SetInt ("AttackSpeedScythe", AttackSpeedScythe);
         }
     }
 
@@ -475,7 +477,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedScythe = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedScythe);
+            PlayerPrefs.SetInt ("AttackSpeedScythe", AttackSpeedScythe);
         }
     }
 
@@ -485,7 +487,7 @@ public class MainMenu : MonoBehaviour
             AttackSpeedScythe = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("AttackSpeed", AttackSpeedScythe);
+            PlayerPrefs.SetInt ("AttackSpeedScythe", AttackSpeedScythe);
         }
     }
 
@@ -496,7 +498,7 @@ public class MainMenu : MonoBehaviour
             DashLengthScythe = 1;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthScythe);
+            PlayerPrefs.SetInt ("DashLengthScythe", DashLengthScythe);
         }
     }
 
@@ -506,7 +508,7 @@ public class MainMenu : MonoBehaviour
             DashLengthScythe = 2;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthScythe);
+            PlayerPrefs.SetInt ("DashLengthScythe", DashLengthScythe);
         }
     }
 
@@ -516,7 +518,7 @@ public class MainMenu : MonoBehaviour
             DashLengthScythe = 3;
             rubies -= 5;
             PlayerPrefs.SetInt ("rubies", rubies);
-            PlayerPrefs.SetInt ("DashLength", DashLengthScythe);
+            PlayerPrefs.SetInt ("DashLengthScythe", DashLengthScythe);
         }
     }
     #endregion

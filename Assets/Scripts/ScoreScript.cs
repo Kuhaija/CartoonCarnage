@@ -18,10 +18,10 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //score = GetComponent<Text> ();
-        //highScore = GetComponent<Text> ();
         highscoreNarc = PlayerPrefs.GetInt ("highscoreNarc", highscoreNarc);
         highscoreRainbow = PlayerPrefs.GetInt ("highscoreRainbow", highscoreRainbow);
+        
+    
     }
 
     // Update is called once per frame

@@ -39,6 +39,9 @@ public class Move : MonoBehaviour
     private int AttackSpeedBat;
     private int DashLengthBat;
     public int rageGain;
+    private int RageGainScythe;
+    private int AttackSpeedScythe;
+    private int DashLengthScythe;
     //////////////////////////////////
 
 
@@ -88,9 +91,13 @@ public class Move : MonoBehaviour
         dead.SetActive(false);
         rubies = PlayerPrefs.GetInt ("rubies", rubies);
 
-        RageGainBat = PlayerPrefs.GetInt ("RageGain", RageGainBat);
-        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeed", AttackSpeedBat);
-        DashLengthBat = PlayerPrefs.GetInt ("DashLength", DashLengthBat);
+        RageGainBat = PlayerPrefs.GetInt ("RageGainBat", RageGainBat);
+        AttackSpeedBat = PlayerPrefs.GetInt ("AttackSpeedBat", AttackSpeedBat);
+        DashLengthBat = PlayerPrefs.GetInt ("DashLengthBat", DashLengthBat);
+
+        RageGainScythe = PlayerPrefs.GetInt ("RageGainScythe", RageGainScythe);
+        AttackSpeedScythe = PlayerPrefs.GetInt ("AttackSpeedScythe", AttackSpeedScythe);
+        DashLengthScythe = PlayerPrefs.GetInt ("DashLengthScythe", DashLengthScythe);
         
         switch (RageGainBat)
         {
@@ -125,6 +132,55 @@ public class Move : MonoBehaviour
         }
 
         switch (DashLengthBat)
+        {
+            case 1:
+                dashSpeed += 2;
+                break;
+            case 2:
+                dashSpeed += 4;
+                break;
+            case 3:
+                dashSpeed += 6;
+                break;
+            default:
+                
+                break;
+        }
+
+
+        switch (RageGainScythe)
+        {
+            case 1:
+                rageGain = 2;
+                break;
+            case 2:
+                rageGain = 4;
+                break;
+            case 3:
+                rageGain = 7;
+                break;
+            default:
+                rageGain = 1;
+                break;
+        }
+
+        switch (AttackSpeedScythe)
+        {
+            case 1:
+                animator.SetFloat("speed", 1.25f);
+                break;
+            case 2:
+                animator.SetFloat("speed", 1.5f);
+                break;
+            case 3:
+                animator.SetFloat("speed", 1.75f);
+                break;
+            default:
+                animator.SetFloat("speed", 1f);
+                break;
+        }
+
+        switch (DashLengthScythe)
         {
             case 1:
                 dashSpeed += 2;
